@@ -53,6 +53,16 @@ def token_urlsafe(nbytes=32):
     return base64.urlsafe_b64encode(tok).rstrip(b'=').decode('ascii')
 
 
+class SettingsHandler(tornado.web.RequestHandler):
+    """Provides the settings for the JavaScript part."""
+
+    def initialize(self, **kwargs):
+        self.settings_dict = kwargs
+
+    def get(self):
+        self.render("settings.js", **self.settings_dict)
+
+
 class ClientManager(object):
     """Manage RainbowAlga clients.
     """
@@ -229,8 +239,8 @@ def main():
 
     settings = {
         'debug': True,
-        'static_path': os.path.join(root, 'static'),
-        'template_path': os.path.join(root, 'static/templates'),
+        'static_path': os.path.join(root, 'www'),
+        'template_path': os.path.join(root, 'www/templates'),
     }
 
     application = tornado.web.Application([(r"/echo", EchoWebSocket, {
@@ -239,6 +249,9 @@ def main():
         'lock': lock
     }), (r"/message", MessageProvider, {
         'client_manager': client_manager
+    }), (r"/js/settings.js", SettingsHandler, {
+        'ip': ip,
+        'port': port,
     }), (r"/(.*)", tornado.web.StaticFileHandler, {
         "path": root_folder,
         "default_filename": "index.html"
