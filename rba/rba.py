@@ -233,7 +233,7 @@ def main():
         'template_path': os.path.join(root, 'static/templates'),
     }
 
-    application = tornado.web.Application([(r"/test", EchoWebSocket, {
+    application = tornado.web.Application([(r"/echo", EchoWebSocket, {
         'client_manager': client_manager,
         'server_status': server_status,
         'lock': lock
