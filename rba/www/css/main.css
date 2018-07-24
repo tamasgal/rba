@@ -22,11 +22,6 @@ body {
     width: 75px;
 }
 
-#canvas {
-    min-height: 300px;
-    padding: 0;
-    margin: 0;
-}
 #console {
   height: 90px;
   font-size: 10px;
@@ -37,63 +32,19 @@ body {
   background-color: #f0f0f0;
 }
 
-#stats {
-    position: absolute !important;
-    top: 60px !important;
-    left: 10px !important;
-}
-
-#gui_left {
-    top: 60px;
-    left: 10px;
-}
-
-#gui_right {
-    top: 60px;
-    right: 10px;
-}
-
-.gui_menu {
-    position: absolute;
-    font-family: "Menlo", "Andale Mono", monospace;
-}
-
-.gui_menu input {
-    padding: 0;
-    padding-left: 3px;
-    padding-right: 3px;
-    margin: 4px;
-    height: 19px;
-    line-height: 19px;
-    font-size: 11px;
-}
-#gui_right .selector {
-    padding: 0 !important;
-    border: none !important;
-    box-shadow: none !important;
-}
-
-#gui_right div.slider {
-    padding-left: 1px;
-    padding-right: 1px;
-    background-color: #eeeeee;
-}
-#gui_right .button {
-    background-color: #cccccc;
-}
-
-#gui_right .button.gears {
-    width: 16px;
-    height: 16px;
-}
-
-#gui_left .button.gears {
-    width: 16px;
-    height: 16px;
-}
-
 #dg-save {
     background-color: #eeeeee !important;
+}
+
+#aa3d_frame {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  padding-top: 52px;
+  padding-bottom: 110px;
+  border: 0;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 
