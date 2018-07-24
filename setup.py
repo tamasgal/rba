@@ -12,7 +12,7 @@ with open('requirements.txt') as fobj:
 setup(
     name='rba',
     version='0.1',
-    url='http://git.km3net.de/tgal/rba',
+    url='http://git.km3net.de/common/rba',
     description='A dispatcher for the KM3NeT online event display aa3d',
     author='Tamas Gal',
     author_email='tgal@km3net.de',
