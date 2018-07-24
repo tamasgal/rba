@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KM3NeT Event Display</title>
+
+    <link rel="apple-touch-icon" sizes="57x57" href="images/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="images/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="images/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar">&nbsp;</span>
+            <span class="icon-bar">&nbsp;</span>
+            <span class="icon-bar">&nbsp;</span>
+          </button>
+          <a class="navbar-brand" href="#">
+            aa3d &nbsp;&nbsp;
+            <span id="statusLabel" class="label label-danger">RBA</span>
+            <span id="tokenLabel" class="label label-info" data-clipboard-text="">token</span>
+          </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+    <div id="canvas" class="container-fluid"></div>
+
+    <footer class="footer">
+      <div class="container-fluid" >
+        <div class="row">
+          <div class="col-sm-6">
+            <form class="navbar-form navbar-left" action="" style="display: none">
+              <div class="form-group">
+                <input type="number" id="detectorInput" placeholder="Det ID" class="form-control input-sm" value="14">
+              </div>
+              <div class="form-group">
+                <input type="number" id="runInput" placeholder="Run ID" class="form-control input-sm" value="3700">
+              </div>
+              <div class="form-group">
+                <input type="number" id="eventInput" placeholder="Event" class="form-control input-sm" value="0">
+              </div>
+              <button type="button" id="loadEventBtn" class="btn btn-success btn-sm">Load Event</button>
+            </form>
+
+            <form class="navbar-form navbar-left" action="">
+              <div class="form-group">
+                <input type="text" id="km3srvHostInput" placeholder="Hostname" class="form-control input-sm" value="localhost">
+              </div>
+              <div class="form-group">
+                <input type="number" id="km3srvPortInput" placeholder="Port" class="form-control input-sm" value="8088">
+              </div>
+              <button type="button" id="connectToKm3srvBtn" class="btn btn-success btn-sm">Connect</button>
+            </form>
+          </div>
+          <div class="col-sm-6">
+            <pre id="console"></pre>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+    <div id="stats"></div>
+    <div id="gui_left" class="gui_menu"></div>
+    <div id="gui_right" class="gui_menu"></div>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/rba.js"></script>
+  </body>
+</html>
