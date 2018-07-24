@@ -1,0 +1,11 @@
+include README.md
+include LICENSE
+include requirements.txt
+
+recursive-include doc *
+recursive-include rba/tests *.py
+recursive-include rba/www *
+
+recursive-exclude doc *.pyc
+recursive-exclude doc *.pyo
+prune doc/_build
