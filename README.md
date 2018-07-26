@@ -7,11 +7,13 @@ RainbowAlga is an event dispatcher for the online event display **aa3d**.
 The following steps are required to get RainbowAlga up and running:
 
     git clone http://git.km3net.de/common/rba.git
-    cd rba
-    svn co svn co http://svn.km3net.de/dataformats/aanet/branch/v2/aa3d rba/www
+    cd rba/www/aa3d
+    python brew.py
+    cd ../../..
     pip install .
 
-This will install a ``rainbowalga`` command line utility.
+This will generate the JavaScript files from the coffee files (you need
+coffee for this) and install a ``rainbowalga`` command line utility.
 
 ## Usage
 
