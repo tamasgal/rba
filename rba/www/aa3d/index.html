@@ -1,0 +1,91 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+	<title>aa3d Event Display</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+   <style>
+			body {
+				color: #ffffff;
+				font-family: Monospace;
+				font-size: 13px;
+				text-align: center;
+				background-color: #ffffff;
+				margin: 0px;
+				overflow: hidden;
+			}
+		   #info {
+                                position: absolute;
+                                bottom: 20px; width: 230px;
+                                right: 20px;
+                                padding: 8px;
+                                color: #ffffff;
+                                background-color: #555555;
+                                opacity: 0.7;
+                        text-align: left;
+                        font-family: "Lucida Grande",sans-serif;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 11px;
+                        line-height: normal;
+                        }
+			#init { postion:absolute;
+			        z-index:999;
+				margin: 0 auto;
+			        margin-top: 200px;
+				width: 500px;
+				padding: 8px;
+				color: #ffffff;
+				background-color: #555555;
+				opacity: 0.7;
+			text-align: left;
+			font-family: "Lucida Grande",sans-serif;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 22px;
+			line-height: normal;
+			}
+			#button {
+				position: absolute;
+				bottom: 20px;
+				right: 20px; 
+				padding: 8px;
+				color: #ffffff;
+				background-color: #555;
+				opacity: 0.7;
+			#container {
+				position: absolute;
+			        z-index: 1;
+			}
+			}
+
+		</style>
+</head>
+<body>
+
+<script src="libs/three.js"></script>
+<script src="libs/OrbitControls.js"></script>
+<script src="libs/stats.min.js"></script>
+<script src="libs/dat.gui.js"></script>
+<script src="libs/pako.js"></script>
+<script src="libs/VRController.js"></script>
+
+<script src="libs/controls/VRControls.js"></script>
+<script src="libs/effects/VREffect.js"></script>
+<script src="libs/vr/WebVR.js"></script>
+
+<script src="params.js"></script>
+<script src= "fragmentshader.js"></script>
+<script src= "vertexshader.js"></script>
+<script src= "hit_fragmentshader.js"></script>
+<script src= "hit_vertexshader.js"></script>
+
+
+
+<script src="aa3d.js"></script>
+
+
+
+
+</body>
