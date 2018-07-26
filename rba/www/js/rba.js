@@ -46,7 +46,8 @@ var WSHandler = (function() {
             }
         }
         if(message.kind == "event") {
-            draw_event(message.data);
+            RBA.log("Event recieved.");
+            document.getElementById('aa3d_frame').contentWindow.process_event(message.data); 
         }
         if(message.kind == "token") {
             var token = message.data;
