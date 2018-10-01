@@ -1248,7 +1248,20 @@ loadFile = function(url, asynch, when_done) {
 
 process_event = function(data) {
     console.log("Recieved data from RBA");
-    eval(data);
+    try {
+        var evt = parse_jdaqevent(data);
+    } catch(ParseError) {
+        console.log("Unable to parse binary data from RBA. Trying to execute it instead...");
+        try {
+            eval(data);
+        } catch(SyntaxError) {
+            console.log("Unable to evaluate data from RBA.");
+        }
+    }
+}
+
+parse_jdaqevent = function(data) {
+    throw "ParseError";
 }
 
 many_screenshots = function(i) {
