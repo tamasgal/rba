@@ -11,12 +11,14 @@ import threading
 import re
 from time import sleep
 
+import asyncio
 import tornado
 
 import tornado.ioloop
 import tornado.web
 import tornado.websocket
 from tornado.options import define, options
+from tornado.platform.asyncio import AnyThreadEventLoopPolicy
 
 import websocket
 
@@ -40,6 +42,8 @@ define(
     default="8088",
     type=int,
     help="The RainbowAlga server will be available on this port.")
+
+asyncio.set_event_loop_policy(AnyThreadEventLoopPolicy())
 
 
 def token_urlsafe(nbytes=32):
@@ -77,7 +81,7 @@ class ClientManager(object):
 
     def add(self, client):
         """Register a new client"""
-        token = token_urlsafe(3)
+        token = token_urlsafe(2)
         self._clients[token] = client
         self.log.info("New client with token '%s' registered.", token)
         return token
@@ -91,9 +95,10 @@ class ClientManager(object):
         """Ping clients ever `interval` seconds"""
         while True:
             self.log.info("Pinging %d clients.", len(self._clients))
-            print(self._clients)
-            for client in self._clients.values():
-                print(client)
+            if self._clients:
+                print("Ping to")
+            for token, client in self._clients.items():
+                print("    -> {}".format(token))
                 client.message("Ping.")
             sleep(interval)
 
@@ -188,7 +193,7 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
     def message(self, data, kind="info"):
         """Convert message to JSON and send it to the clients"""
         message = json.dumps({'kind': kind, 'data': data})
-        print("Sent {} bytes.".format(len(message)))
+        self.log.debug("Sent {} bytes.".format(len(message)))
         self.write_message(message)
 
 
