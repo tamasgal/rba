@@ -47,7 +47,7 @@ var WSHandler = (function() {
         }
         if(message.kind == "event") {
             RBA.log("Event recieved.");
-            document.getElementById('aa3d_frame').contentWindow.process_event(message.data); 
+            document.getElementById('aa3d_frame').contentWindow.process_event(atob(message.data)); 
         }
         if(message.kind == "token") {
             var token = message.data;

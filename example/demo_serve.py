@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import base64
 import json
 import websocket
 import sys
@@ -21,6 +22,6 @@ def serve_data(data, kind, token, url=URL):
     ws.close()
 
 
-with open(FILENAME, "r") as fobj:
-    data = fobj.read()
+with open(FILENAME, "rb") as fobj:
+    data = base64.b64encode(fobj.read()).decode()
     serve_data(data, 'event', TOKEN)

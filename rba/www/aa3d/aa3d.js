@@ -1261,6 +1261,12 @@ process_event = function(data) {
 }
 
 parse_jdaqevent = function(data) {
+    console.log("Parsing " + data.length + " bytes of event data.");
+    var buffer = new ArrayBuffer(16);  // for the header (length + datatype)
+
+    // the following doesn't work yet
+    var length = new Uint32Array(buffer, 0, 4);
+    console.log(length);
     throw "ParseError";
 }
 
