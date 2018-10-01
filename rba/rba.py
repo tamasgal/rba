@@ -11,12 +11,14 @@ import threading
 import re
 from time import sleep
 
+import asyncio
 import tornado
 
 import tornado.ioloop
 import tornado.web
 import tornado.websocket
 from tornado.options import define, options
+from tornado.platform.asyncio import AnyThreadEventLoopPolicy
 
 import websocket
 
@@ -40,6 +42,8 @@ define(
     default="8088",
     type=int,
     help="The RainbowAlga server will be available on this port.")
+
+asyncio.set_event_loop_policy(AnyThreadEventLoopPolicy())
 
 
 def token_urlsafe(nbytes=32):
