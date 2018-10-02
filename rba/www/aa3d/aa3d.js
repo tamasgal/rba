@@ -1261,14 +1261,41 @@ process_event = function(data) {
 }
 
 parse_jdaqevent = function(data) {
-    console.log("Parsing " + data.length + " bytes of event data.");
-    var buffer = new ArrayBuffer(16);  // for the header (length + datatype)
-
-    // the following doesn't work yet
-    var length = new Uint32Array(buffer, 0, 4);
-    console.log(length);
+    console.log("Parsing " + data.length + " bytes of event data (type: " + typeof(data) + ") .");
+    var abuf = _binaryStringToArrayBuffer(data);
+    // console.log("Raw event data: " + data);
+    var data_view = new DataView(abuf);
+    var data_length = data_view.getUint32(0, true);
+    var data_type = data_view.getUint32(4, true);
+    var det_id = data_view.getUint32(8, true);
+    console.log("Data view: " + data_view);
+    console.log("Data length: " + data_length);
+    console.log("Data type: " + data_type);
+    console.log("Detector ID: " + det_id);
+    console.log(abuf);
     throw "ParseError";
 }
+
+
+_base64ToArrayBuffer = function(base64) {
+    var binary_string =  window.atob(base64);
+    var len = binary_string.length;
+    var bytes = new Uint8Array( len );
+    for (var i = 0; i < len; i++)        {
+        bytes[i] = binary_string.charCodeAt(i);
+    }
+    return bytes.buffer;
+}
+
+_binaryStringToArrayBuffer = function(binary_string) {
+    var len = binary_string.length;
+    var bytes = new Uint8Array( len );
+    for (var i = 0; i < len; i++)        {
+        bytes[i] = binary_string.charCodeAt(i);
+    }
+    return bytes.buffer;
+}
+
 
 many_screenshots = function(i) {
   var fn, j, len, results1, s, scfile;

@@ -60,6 +60,8 @@ var WSHandler = (function() {
     self.connect = function(hostname, port) {
         var url = "ws://" + hostname + ":" + port + "/echo";
         self.ws = new WebSocket(url);
+        // not sure if setting the binarytype is needed...
+        // self.ws.binaryType = "arraybuffer";
         RBA.log( "Connecting to " + hostname + ":" + port);
         self.ws.onopen = onopen;
         self.ws.onmessage = onmessage;
