@@ -53,7 +53,7 @@ def token_urlsafe(nbytes=32):
     'Drmhze6EPcv0fN_81Bj-nA'
 
     """
-    tok = os.urandom(nbytes)
+    tok = os.urandom(nbytes-1)
     return base64.urlsafe_b64encode(tok).rstrip(b'=').decode('ascii')
 
 
@@ -81,7 +81,7 @@ class ClientManager(object):
 
     def add(self, client):
         """Register a new client"""
-        token = token_urlsafe(2)
+        token = token_urlsafe(3)
         self._clients[token] = client
         self.log.info("New client with token '%s' registered.", token)
         return token
