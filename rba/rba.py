@@ -42,6 +42,11 @@ define(
     default="8088",
     type=int,
     help="The RainbowAlga server will be available on this port.")
+define(
+    "debug_mode",
+    default=False,
+    type=bool,
+    help="If debug_mode is enabled, the token is set to 'foo'")
 
 asyncio.set_event_loop_policy(AnyThreadEventLoopPolicy())
 
@@ -53,7 +58,7 @@ def token_urlsafe(nbytes=32):
     'Drmhze6EPcv0fN_81Bj-nA'
 
     """
-    tok = os.urandom(nbytes-1)
+    tok = os.urandom(nbytes - 1)
     return base64.urlsafe_b64encode(tok).rstrip(b'=').decode('ascii')
 
 
@@ -81,7 +86,7 @@ class ClientManager(object):
 
     def add(self, client):
         """Register a new client"""
-        token = token_urlsafe(3)
+        token = 'foo' if options.debug_mode else token_urlsafe(3)
         self._clients[token] = client
         self.log.info("New client with token '%s' registered.", token)
         return token
@@ -232,12 +237,16 @@ def main():
 
     ip = options.ip
     port = int(options.port)
+    debug_mode = bool(options.debug_mode)
     server_status = 'ready'
     lock = threading.Lock()
     client_manager = ClientManager()
     root_folder = os.path.join(os.path.dirname(__file__), 'www')
 
     log = get_logger("rainbowalga")
+
+    if debug_mode:
+        log.warning("Debug mode enabled, the token is now fixed to 'foo'.")
 
     print("Starting RainbowAlga.")
     print("Running on {}:{}".format(ip, port))
